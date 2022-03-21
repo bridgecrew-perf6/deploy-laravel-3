@@ -11,14 +11,20 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Update Dependencies
+        run: composer update
 
-      - name: Install Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Install & RUN NPM
+        run: npm install
 
-      - name: Generate key
-        run: php artisan key:generate
+      - name: install resolve loader
+        run: npm install resolve-url-loader@^5.0.0 --save-dev --legacy-peer-deps
+
+      - name: run dev
+        run: npm run dev
+
+      - name: Migration Authentication
+        run: php artisan migrate
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
