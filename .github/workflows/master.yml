@@ -23,8 +23,8 @@ jobs:
       # - name: run dev
       #   run: npm run dev
 
-      - name: Migrate Authentication Table
-        run: php artisan migrate --force
+      # - name: Migrate Authentication Table
+      #   run: php artisan migrate --force
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
