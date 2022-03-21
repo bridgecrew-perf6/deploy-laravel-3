@@ -11,20 +11,20 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
-      - name: Update Dependencies
-        run: composer update
+      # - name: Update Dependencies
+      #   run: composer update
 
-      - name: Install & RUN NPM
-        run: npm install
+      # - name: Install NPM
+      #   run: npm install
 
-      - name: install resolve loader
-        run: npm install resolve-url-loader@^5.0.0 --save-dev --legacy-peer-deps
+      # - name: install resolve loader
+      #   run: npm install resolve-url-loader@^5.0.0 --save-dev --legacy-peer-deps
 
-      - name: run dev
-        run: npm run dev
+      # - name: run dev
+      #   run: npm run dev
 
-      - name: Migration Authentication
-        run: php artisan migrate
+      - name: Migrate Authentication Table
+        run: php artisan migrate --force
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
