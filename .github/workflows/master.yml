@@ -27,7 +27,7 @@ jobs:
       #   run: npm run dev
 
       - name: Migrate Authentication Table
-        run: php artisan migrate
+        run: php artisan migrate --force
 
       - name: Run Seeder User
         run: php artisan db:seed
