@@ -11,8 +11,8 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
-      # - name: Update Dependencies
-      #   run: composer update
+      - name: Update Dependencies
+        run: composer update
 
       # - name: Install NPM
       #   run: npm install
