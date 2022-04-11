@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityLogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 
@@ -22,4 +23,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('books', BookController::class)->except('create');
+Route::middleware('auth')->group(function() {
+    Route::resource('books', BookController::class)->except('create');
+
+    Route::get('activity-log', ActivityLogController::class)->name('activity');
+});
