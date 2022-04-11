@@ -50,9 +50,12 @@
                                 <a class="nav-link {{ request()->routeIs('activity') ? 'active' : '' }}"
                                     href="{{ route('activity') }}">Activity Log</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" target="_blank" href="{{ route('telescope') }}">Telescope</a>
-                            </li>
+                            @if (auth()->user()->email == 'admin@admin.com')
+                                <li class="nav-item">
+                                    <a class="nav-link" target="_blank"
+                                        href="{{ route('telescope') }}">Telescope</a>
+                                </li>
+                            @endif
                         @endauth
                     </ul>
 
@@ -79,13 +82,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                <<<<<<< HEAD
-                                                                                                         document.getElementById('logout-form').submit();">
-                                        =======
-                                        document.getElementById('logout-form').submit();">
-                                        >>>>>>> activity-test
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
