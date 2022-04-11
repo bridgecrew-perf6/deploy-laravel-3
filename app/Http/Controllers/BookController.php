@@ -40,6 +40,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
+        activity()->log('Melihat data buku dengan id: ' . $book->id);
         return view('books.show', compact('book'));
     }
 
