@@ -17,7 +17,7 @@ class Book extends Model
     {
         return LogOptions::defaults()
         ->logOnly(['name', 'qty'])
-        ->logName('Book');
+        ->useLogName('book');
         // Chain fluent methods for configuration options
     }
 }
