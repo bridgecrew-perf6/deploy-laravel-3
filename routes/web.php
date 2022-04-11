@@ -23,6 +23,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('books', BookController::class)->except('create');
-
-Route::get('activity', ActivityLogController::class)->name('activity');
+Route::middleware('auth')->group(function() {
+    Route::resource('books', BookController::class)->except('create');
+    
+    Route::get('activity', ActivityLogController::class)->name('activity');
+});
